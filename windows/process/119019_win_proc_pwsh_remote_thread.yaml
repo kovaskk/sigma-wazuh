@@ -1,11 +1,1 @@
-<rule id="119019" level="5">
-	<if_group>sysmon_event8<if_group>
-	<field name="win.eventdata.sourceImage" type="pcre2">(\\\\powershell\.exe$)|(\\\\pwsh\.exe)</field>
-	<field name="win.eventdata.targetImage" type="pcre2">(\\\\rundll32\.exe$)|(\\\\pwsh\.exe$)</field>
-	<options>no_full_log</options>
-	<decription>Powershell Remote Thread To Known Windows Process</description>
-	<mitre>
-		<id>T1218.011</id>
-		<id>T1059.001</id>
-	</mitre>
-</rule> 
+
