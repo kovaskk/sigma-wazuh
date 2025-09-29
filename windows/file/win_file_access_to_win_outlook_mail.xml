@@ -1,0 +1,16 @@
+<rule id="119020" level="5">
+	<if_sid>61612</if_sid>
+	<field name="win.eventdata.targetFilename" type="pcre2">(\\\\AppData\\\\Local\\\\Comms\\\\(Unistore|UnistoreDB)\\\\(\bdata\b|\bstore\.vol\b)</field>
+	<options>no_full_log</options>
+	<description>Access To Windows Outlook Mail Files By Uncommon Applications</description>
+	<mitre>
+		<id>T1070.008</id>
+	</mitre>
+</rule>
+
+<rule id="119021" level="0">
+	<if_sid>119020</if_sid>
+	<field name="win.eventdata.Image" type="pcre2">System|(^C:\\\\Program Fles \(x86\))|(^C:\\\\Program Files\\\\)|(^C:\\\\Windows\\\\(\bSystem32\b|\bSysWOW64\b)\\\\)|^C:\\\\ProgramData\\\\Microsoft\\\\Windows Defender(?:\.*)\\\\(MpCopyAccelerator\.exe|MsMpEnd\.exe)$|(\\\\thor64\.exe$)|(\\\\thor\.exe$)</field>
+	<options>no_full_log</options>
+	<description>Access To Windows Outlook Mail Files By Common Applications</description>
+</rule>

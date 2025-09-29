@@ -1,0 +1,16 @@
+<rule id="119017" level="5">
+	<if_sid>61162</if_sid>
+	<field name="win.eventdata.targetFilename" type="pcre2">(\\\\Appdata\\\\Local\\\\Microsoft\\\\Windows\\\\webCache\\\\webCacheV01.dat$)| (\\\\cookies\.sqlite$)|(\\\\places\.sqlite$)|(\brelease\\\\(\bkey3\.db\b|\bkey4\.db\b|\blogins\.json\b))$|(\\\\UserData\\\\Default\\\\Login Data$)|(\\\\User Data\\\\Local State\\\\$)</field>
+	<options>no_full_log</options>
+	<description>Access To Browser Credential Files By Uncommon Applications</description>
+	<mitre>
+		<id>T1003</id>
+	</mitre>
+</rule>
+
+<rule id="119018" level="0">
+	<if_sid>119017</if_sid>
+	<field name="win.eventdata.Image" type="pcre2">System|(^C:\\\\Program Fles \(x86\))|(^C:\\\\Program Files\\\\)|(^C:\\\\Windows\\\\(\bSystem32\b|\bSysWOW64\b)\\\\)|^C:\\\\ProgramData\\\\Microsoft\\\\Windows Defender(?:\.*)\\\\(MpCopyAccelerator\.exe|MsMpEnd\.exe)$|(\\\\thor64\.exe$)|(\\\\thor\.exe$)</field>
+	<options>no_full_log</options>
+	<description>Access To Browser Credential Files By Common Applications</description>
+</rule>

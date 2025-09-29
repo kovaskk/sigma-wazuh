@@ -1,0 +1,10 @@
+<rule id="119029" level="7">
+	<if_sid>61613</if_sid>
+	<field name="win.eventdata.targetFilename">(?:\\\\AppData\\\\Local\\\\Temp\\\\TfsStore\\\\Tfs_DAV\\\\).*(?:\.7z$|\.bat$|\.dat$|\.ico$|\.js$|\.lnk$|\.ps1$|\.rar$|\.vbe$|\.vbs$|\.zip$)</field>
+	<options>no_full_log</options>
+	<description> WebDAV Temporary Local File Creation </description>
+	<mitre>
+		<id>T1584</id>
+		<id>T1566</id>
+	</mitre>
+</rule>

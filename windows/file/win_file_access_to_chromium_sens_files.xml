@@ -1,0 +1,16 @@
+<rule id="119015" level="5">
+	<if_sid>61612</if_sid>
+    <field name="win.eventdata.targetFilename" type="pcre2">(\\\\User Data\\\\Default\\\\(\bCookies\b|\bHistory\b|\bWeb Data\b|\bNetwork\b\\\\\bCookies\b)\\\\)</field>
+    <options>no_full_log</options>
+    <description> Access To Chromium Browsers Sensitive Files By Uncommon Applications </description>
+    <mitre>
+        <id>T1003</id>
+    </mitre>
+ </rule>
+ 
+<rule id="119016" level="0">
+	<if_sid>119015</if_sid>
+	<field name="win.eventdata.Image" type="pcre2">(^C:\\\\Program Files \(x86\)\\)|(^C:\\\\Program Files\\\\)|(^C:\\\\Windows\\\\System32\\)|(^C:\\\\Windows\\\\SysWOW64\\\\)|^C:\\\\ProgramData\\\\Microsoft\\\\Windows Defender(?:\.*)\\\\MpCopyAccelerator\.exe$|^C:\\\\ProgramData\\\\Microsoft\\\\Windows Defender(?:\.*)\\\\MsMpEng\.exe$</field>
+	<options>no_full_log</options>
+	<description>Access To Chromium Browsers Sensitive Files By Common Application</description>
+</rule>

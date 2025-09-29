@@ -1,0 +1,17 @@
+<rule id="119030" level="7">
+	<if_group>sysmon_event7</if_group>
+	<field name="win.eventdata.imageLoaded" type="pcre2">(?:\\\\dbghelp\.dll$)|(?:\\\\dbgcore\.dll$)</field>
+	<field name="win.eventdata.Image" type="pcre2">(?:\\\\bash\.exe$|\\\cmd\.exe$|\\\\cscript\.exe$|\\\\dnx\.exe$|\\\\excel\.exe$|\\\\monitoringhost\.exe$|\\\\msbuild\.exe$|\\\\mshta\.exe$|\\\\outlook\.exe$|\\\\poweprnt\.exe$|\\\\regsvcs\.exe$|\\\\rundll32\.exe$|\\\\sc\.exe$|\\\\scriptrunner\.exe$|\\\\winword\.exe$|\\\\wmic\.exe$|\\\\wscript\.exe$)</field>
+	<options>no_full_log</options>
+	<description>Dbghelp/Dbgcore DLL Loaded By Uncommon/Suspicious Process</decription>
+	<mitre>
+		<id>T1003.001</id>
+	</mitre>
+</rule>
+
+<rule id="119031" level="0">
+	<if_sid>119030</if_sid>
+	<field name="win.eventdata.CommandLine" type="pcre2">^C:\\\\WINDOWS\\\\WinSxS(?:\.*)\\\\TiWorker\.exe -Embedding$</field>
+	<options>no_full_log</options>
+	<description>Dbghelp/Dbgcore DLL Loaded By Common</description>
+</rule>

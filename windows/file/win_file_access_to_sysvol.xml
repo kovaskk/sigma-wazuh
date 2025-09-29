@@ -1,0 +1,17 @@
+<rule id="119022" level="7">
+	<if_sid>61612</if_sid>
+	<field name="win.eventdata.targetFilename" type="pcre2">
+	^\\\\.*(?:\.*)sysvol(?:\.*)\\Policies(?:\.*)\\\\(?:audit\.csv|Files\.xml|GptTmpl\.inf|groups\.xml|Registry\.pol|Registry\.xml|sheduledtasks\.xml|scripts\.ini|services\.xml)$</field>
+	<options>no_full_log</options>
+	<description>Access To Potentially Sensitive Sysvol Files By Uncommon Application</description>
+	<mitre>
+		<id>T1552.006</id>
+	</mitre>
+</rule>
+
+<rule id="119023" level="0">
+	<if_sid>110922</if_sid>
+	<field name="win.eventdata.Image" type="pcre2">(^C:\\\\Program Fles \(x86\))|(^C:\\\\Program Files\\\\)|(^C:\\\\Windows\\\\(system32\b|SysWOW64\b)\\\\)|^C:\\\\Windows\\\\explorer\.exe$</field>
+	<options>no_full_log</options>
+	<description>Access To Potentially Sensitive Sysvol Files By Common Application</description>
+</rule>

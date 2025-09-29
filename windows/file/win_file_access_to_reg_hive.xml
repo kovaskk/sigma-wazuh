@@ -1,0 +1,17 @@
+<rule id="119026" level="5">
+	<if_sid>61612</if_sid>
+	<field name="win.eventdata.targetFilename" type="pcre2">(?:\.hive?)|(?:\.reg?)</field>
+	<options>no_full_log</options>
+	<description>Access To .Reg/.Hive Files By Uncommon Applications</description>
+	<mitre>
+		<id>T1112</id>
+	</mitre>
+</rule>
+
+
+<rule id="119027" level="0">
+	<if_sid>119026</if_sid>
+	<field name="win.eventdata.Image">(^C:\\\\Program Fles \(x86\))|(^C:\\\\Program Files\\\\)|(^C:\\\\Windows\\\\(\bSystem32\b|\bSysWOW64\b)\\\\)</field>
+	<options>no_full_log</options>
+	<description>Access To .Reg/.Hive Files By Common Applications</description>
+</rule>
